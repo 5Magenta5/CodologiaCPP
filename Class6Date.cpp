@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 
 
 
@@ -10,6 +11,7 @@ private:
 	int day;
 	int month;
 	int year;
+	string dateInString;
 	
 public:
 	Date(int d, int m, int y) try {
@@ -43,6 +45,12 @@ public:
 		return copy;
 	}
 	
+	operator const char* () {
+		ostringstream formatedDate;
+		formatedDate << day << "." << month << "." << year<< endl;
+		dateInString = formatedDate.str();
+		return dateInString.c_str();
+	}
 	
 	void addDays2Date(int d) {
 		day+=d;
@@ -59,20 +67,16 @@ public:
 	}
 };
 int main(){
-	Date day(1,1,1);
-	try {
+	Date d1(1,1,1);
+	/*try {
 		Date day1(1,12,2022);
 		day = day1;
 	}
 	catch(...) {
 		cout<<"object not created" <<endl;
 	}
-	
-	day.showDate();
-	day++;
-	day.showDate();
-	++day;
-	day.showDate();
+	*/
+	cout<<d1<<endl;
 	
 	
 }
